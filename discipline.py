@@ -2,27 +2,22 @@ class Discipline:
     def __init__(self, name="Python", department=None, allowed_specialties=None):
         self.name = name
         self.department = department
-        self.allowed_specialties = allowed_specialties if allowed_specialties is not None else []
+        if allowed_specialties is None:
+            self.allowed_specialties = []
+        else:
+            self.allowed_specialties = allowed_specialties
 
-    def get_name(self):
-        return self.name
+    @property
+    def department_name(self):
+        if self.department is None:
+            return "none"
+        return self.department.name
 
-    def get_allowed_specialties(self):
-        return self.allowed_specialties
-
-    def get_department(self):
-        return self.department
-
-    def set_name(self, name):
-        self.name = name
-
-    def set_department(self, department):
-        self.department = department
-
-    def set_allowed_specialties(self, specialties):
-        self.allowed_specialties = specialties
+    @property
+    def formatted_specialties(self):
+        if not self.allowed_specialties:
+            return "none"
+        return ", ".join(self.allowed_specialties)
 
     def __repr__(self):
-        dept = self.department.name if self.department else "None"
-        specs = ", ".join(self.allowed_specialties) or "-"
-        return f"Discipline({self.name!r}, dept={dept}, specialties=[{specs}])"
+        return f"Discipline({self.name!r}, dept={self.department_name}, specialties=[{self.formatted_specialties}])"
