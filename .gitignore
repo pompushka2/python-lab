@@ -1,2 +1,11 @@
+# Виртуальное окружение
 .venv/
+venv/
+env/
+
+# Настройки IDE (PyCharm / IntelliJ)
 .idea/
+
+# Кэш Python
+__pycache__/
+*.pyc
