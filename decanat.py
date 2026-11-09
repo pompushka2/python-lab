@@ -85,8 +85,8 @@ class Decanat:
         d = self._get_discipline(discipline_name)
         if d not in student.disciplines:
             raise ValueError(f"Student {student.id} is not enrolled in '{discipline_name}'")
-        if grade < 2 or grade > 5:
-            raise ValueError(f"Grade must be between 2 and 5, got {grade}")
+        if grade < 1 or grade > 10:
+            raise ValueError(f"Grade must be between 1 and 10, got {grade}")
         student.grades[d.name] = grade
         print(f"Grade {grade} set for student {student.id} in '{discipline_name}'")
 
